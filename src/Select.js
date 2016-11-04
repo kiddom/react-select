@@ -112,6 +112,7 @@ const Select = React.createClass({
 		valueKey: React.PropTypes.string,           // path of the label value in option objects
 		valueRenderer: React.PropTypes.func,        // valueRenderer: function (option) {}
 		wrapperStyle: React.PropTypes.object,       // optional style to apply to the component wrapper
+		showSelectedCount: React.PropTypes.bool     // optional Value
 	},
 
 	statics: { Async, AsyncCreatable, Creatable },
@@ -156,6 +157,7 @@ const Select = React.createClass({
 			tabSelectsValue: true,
 			valueComponent: Value,
 			valueKey: 'value',
+			showSelectedCount:false
 		};
 	},
 
@@ -790,22 +792,36 @@ const Select = React.createClass({
 		}
 		let onClick = this.props.onValueClick ? this.handleValueClick : null;
 		if (this.props.multi) {
-			return valueArray.map((value, i) => {
-				return (
-					<ValueComponent
-						id={this._instancePrefix + '-value-' + i}
-						instancePrefix={this._instancePrefix}
-						disabled={this.props.disabled || value.clearableValue === false}
-						key={`value-${i}-${value[this.props.valueKey]}`}
-						onClick={onClick}
-						onRemove={this.removeValue}
-						value={value}
-					>
-						{renderLabel(value, i)}
-						<span className="Select-aria-only">&nbsp;</span>
-					</ValueComponent>
-				);
-			});
+			if (!this.props.showSelectedCount){
+					return valueArray.map((value, i) => {
+					return (
+						<ValueComponent
+							id={this._instancePrefix + '-value-' + i}
+							instancePrefix={this._instancePrefix}
+							disabled={this.props.disabled || value.clearableValue === false}
+							key={`value-${i}-${value[this.props.valueKey]}`}
+							onClick={onClick}
+							onRemove={this.removeValue}
+							value={value}
+						>
+							{renderLabel(value, i)}
+							<span className="Select-aria-only">&nbsp;</span>
+						</ValueComponent>
+					);
+				});
+			}
+			return (
+				<ValueComponent
+					id={this._instancePrefix + '-value-item'}
+					disabled={true}
+					instancePrefix={this._instancePrefix}
+					onClick={onClick}
+					value={valueArray[0]}
+				>
+					{renderLabel(valueArray[0])}
+				</ValueComponent>
+			)
+			
 		} else if (!this.state.inputValue) {
 			if (isOpen) onClick = null;
 			return (

@@ -14,8 +14,15 @@ const WHY_WOULD_YOU = [
 	{ label: 'Chocolate (are you crazy?)', value: 'chocolate', disabled: true },
 ].concat(FLAVOURS.slice(1));
 
-var MultiSelectField = React.createClass({
-	displayName: 'MultiSelectField',
+const inputRender = (values) => {
+  if (!values) {
+    return null;
+  }
+  return `${values.length}`;
+};
+
+var MultiSelectWithDifferentLabel = React.createClass({
+	displayName: 'MultiSelectWithDifferentLabel',
 	propTypes: {
 		label: React.PropTypes.string,
 	},
@@ -45,8 +52,7 @@ var MultiSelectField = React.createClass({
 		return (
 			<div className="section">
 				<h3 className="section-heading">{this.props.label}</h3>
-				<Select multi simpleValue disabled={this.state.disabled} value={this.state.value} placeholder="Select your favourite(s)" options={this.state.options} onChange={this.handleSelectChange}/>
-
+				<Select multi simpleValue disabled={this.state.disabled} value={this.state.value} placeholder="Select your favourite(s)" options={this.state.options} onChange={this.handleSelectChange} showSelectedCount={true} valueRenderer={() => inputRender(this.state.value)} />
 				<div className="checkbox-list">
 					<label className="checkbox">
 						<input type="checkbox" className="checkbox-control" checked={this.state.disabled} onChange={this.toggleDisabled} />
@@ -62,4 +68,4 @@ var MultiSelectField = React.createClass({
 	}
 });
 
-module.exports = MultiSelectField;
+module.exports = MultiSelectWithDifferentLabel;
