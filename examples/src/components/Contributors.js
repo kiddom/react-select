@@ -1,5 +1,5 @@
 import React from 'react';
-import Select from 'react-select';
+import Select from 'smb-react-selection';
 
 const CONTRIBUTORS = require('../data/contributors');
 const MAX_CONTRIBUTORS = 6;

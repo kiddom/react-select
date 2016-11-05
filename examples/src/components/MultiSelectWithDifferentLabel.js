@@ -1,5 +1,5 @@
 import React from 'react';
-import Select from 'react-select';
+import Select from 'smb-react-selection';
 
 const FLAVOURS = [
 	{ label: 'Chocolate', value: 'chocolate' },
@@ -18,7 +18,8 @@ const inputRender = (values) => {
   if (!values) {
     return null;
   }
-  return `${values.length}`;
+  const splitLen = values.split(',');
+  return `${splitLen.length}`;
 };
 
 var MultiSelectWithDifferentLabel = React.createClass({

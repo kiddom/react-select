@@ -813,9 +813,9 @@ const Select = React.createClass({
 			return (
 				<ValueComponent
 					id={this._instancePrefix + '-value-item'}
-					disabled={true}
+					disabled={this.props.disabled}
 					instancePrefix={this._instancePrefix}
-					onClick={onClick}
+					onClick={null}
 					value={valueArray[0]}
 				>
 					{renderLabel(valueArray[0])}
@@ -1069,8 +1069,8 @@ const Select = React.createClass({
 			focusedOption = this._focusedOption = null;
 		}
 		let className = classNames('Select', this.props.className, {
-			'Select--multi': this.props.multi,
-			'Select--single': !this.props.multi,
+			'Select--multi': this.props.multi && !this.props.showSelectedCount,
+			'Select--single': !this.props.multi || this.props.showSelectedCount,
 			'is-disabled': this.props.disabled,
 			'is-focused': this.state.isFocused,
 			'is-loading': this.props.isLoading,
