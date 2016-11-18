@@ -1,6 +1,6 @@
 {
-  "name": "smb-react-selection",
-  "version": "1.0.1-rc.2",
+  "name": "react-select",
+  "version": "1.0.1-rc.3",
   "description": "A Select control built with and for ReactJS",
   "main": "lib/Select.js",
   "style": "dist/react-select.min.css",

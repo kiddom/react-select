@@ -1,5 +1,5 @@
 import React from 'react';
-import Select from 'smb-react-selection';
+import Select from 'react-select';
 
 var ValuesAsBooleansField = React.createClass({
 	displayName: 'ValuesAsBooleansField',

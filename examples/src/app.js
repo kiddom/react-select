@@ -2,7 +2,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Select from 'smb-react-selection';
+import Select from 'react-select';
 
 import Creatable from './components/Creatable';
 import Contributors from './components/Contributors';

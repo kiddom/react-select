@@ -35,13 +35,13 @@ Then open [`localhost:8000`](http://localhost:8000) in a browser.
 The easiest way to use React-Select is to install it from NPM and include it in your own React build process (using [Browserify](http://browserify.org), etc).
 
 ```javascript
-npm install smb-react-selection --save
+npm install react-select --save
 ```
 
 At this point you can import react-select and its styles in your application as follows:
 
 ```js
-import Select from 'smb-react-selection';
+import Select from 'react-select';
 
 // Be sure to include styles at some point, probably during your bootstrapping
 import 'react-select/dist/react-select.css';
@@ -152,7 +152,7 @@ Everything that applies to `loadOptions` with callbacks still applies to the Pro
 An example using the `fetch` API and ES6 syntax, with an API that returns an object like:
 
 ```javascript
-import Select from 'smb-react-selection';
+import Select from 'react-select';
 
 /*
  * assuming the API returns something like this:
@@ -183,7 +183,7 @@ const getOptions = (input) => {
 If you want to load options asynchronously externally from the `Select` component, you can have the `Select` component show a loading spinner by passing in the `isLoading` prop set to `true`.
 
 ```javascript
-var Select = require('smb-react-selection');
+var Select = require('react-select');
 
 var isLoadingExternally = true;
 
@@ -201,7 +201,7 @@ It decorates a `Select` and so it supports all of the default properties (eg sin
 The easiest way to use it is like so:
 
 ```js
-import { Creatable } from 'smb-react-selection';
+import { Creatable } from 'react-select';
 
 function render (selectProps) {
   return <Creatable {...selectProps} />;
@@ -227,7 +227,7 @@ Use it as follows:
 
 ```jsx
 import React from 'react';
-import { AsyncCreatable } from 'smb-react-selection';
+import { AsyncCreatable } from 'react-select';
 
 function render (props) {
   // props can be a mix of Async, Creatable, and Select properties

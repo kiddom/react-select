@@ -1,5 +1,5 @@
 import React from 'react';
-import Select from 'smb-react-selection';
+import Select from 'react-select';
 import Gravatar from 'react-gravatar';
 
 const USERS = require('../data/users');
